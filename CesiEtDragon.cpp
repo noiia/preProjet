@@ -16,40 +16,9 @@ array <string, 20> nomAtkCrea = { "coup de burne", "attaque au pigeon", "queue d
 
 void jeu() {
 	std::cout << "Bienvenue dans CESI et Dragon le jeu que vous attendiez depuis le siecle precedent." << endl << endl;
-	// création des différents personnages
-	ifstream fichier;
-	fichier.open("Data.csv", ios::out);
-	string CreaName, CreaPv, CreaAtk, CreaLv;
-	// Vérifie si le fichier est ouvert correctement
-	if (!fichier.is_open()) {
-		cerr << "Erreur lors de l'ouverture du fichier." << endl;
-	}
-
-	vector<Creatures> donnees;  // Stocke les données CSV
-
-	string ligne;
-	int i = 0;
-	while (getline(fichier, ligne)) {
-
-		istringstream streamLigne(ligne);
-
-		string colonne;
-		getline(streamLigne, colonne, ',');
-		string nom = colonne;
-		getline(streamLigne, colonne, ',');
-		int atk = stoi(colonne);
-		getline(streamLigne, colonne, ',');
-		int pv = stoi(colonne);
-		getline(streamLigne, colonne, ',');
-		int niveau = stoi(colonne);
-
-		Creatures creature(nom, atk, pv, niveau, i++);
-		creature.affiche(1);
-		donnees.push_back(creature);
-	}
 
 	// Actions de jeu
-	bool limited;
+
 
 	std::cout << "Creons ton personnage, comment veux-tu l'appeler ?" << endl;
 	string name;

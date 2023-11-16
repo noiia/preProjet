@@ -112,20 +112,50 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BDD.cpp" />
     <ClCompile Include="CesiEtDragon.cpp" />
     <ClCompile Include="Creatures.cpp" />
+    <ClCompile Include="forgottenFunctions.cpp" />
+    <ClCompile Include="FormListeEnnemi.cpp" />
+    <ClCompile Include="FormMenu.cpp" />
+    <ClCompile Include="FormOptions.cpp" />
     <ClCompile Include="Heros.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Sauvegarde.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\WS1\Data.csv" />
-  </ItemGroup>
-  <ItemGroup>
+    <ClInclude Include="BDD.h" />
     <ClInclude Include="CesiEtDragon.h" />
     <ClInclude Include="Creatures.h" />
+    <ClInclude Include="FormListeEnnemi.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="FormMenu.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="FormOptions.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Heros.h" />
     <ClInclude Include="Sauvegarde.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FormListeEnnemi.resx">
+      <DependentUpon>FormListeEnnemi.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMenu.resx">
+      <DependentUpon>FormMenu.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormOptions.resx">
+      <DependentUpon>FormOptions.h</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
