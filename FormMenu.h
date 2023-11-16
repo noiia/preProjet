@@ -120,7 +120,7 @@ namespace preProjet {
 	private: System::Void OptBtn_Click(System::Object^ sender, System::EventArgs^ e) {
 		FormOptions^ formOptions = gcnew FormOptions();
 		formOptions->ShowDialog();
-		System::Diagnostics::Debug::WriteLine("Fenetre fermée");
+		System::Diagnostics::Debug::WriteLine("FormOptions fermé");
 	}
 private: System::Void PlayBtn_Click(System::Object^ sender, System::EventArgs^ e) {
 }

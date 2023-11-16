@@ -1,4 +1,5 @@
 #pragma once
+#include "FormListeEnnemi.h"
 
 namespace preProjet {
 
@@ -45,7 +46,7 @@ namespace preProjet {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -70,7 +71,6 @@ namespace preProjet {
 			this->Title->Size = System::Drawing::Size(136, 44);
 			this->Title->TabIndex = 0;
 			this->Title->Text = L"Options";
-			this->Title->Click += gcnew System::EventHandler(this, &FormOptions::label1_Click);
 			// 
 			// HeroBtn
 			// 
@@ -93,6 +93,7 @@ namespace preProjet {
 			this->EnnemiBtn->TabIndex = 2;
 			this->EnnemiBtn->Text = L"Liste d\'ennemis";
 			this->EnnemiBtn->UseVisualStyleBackColor = true;
+			this->EnnemiBtn->Click += gcnew System::EventHandler(this, &FormOptions::EnnemiBtn_Click);
 			// 
 			// FormOptions
 			// 
@@ -110,7 +111,11 @@ namespace preProjet {
 
 		}
 #pragma endregion
-	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
+
+	private: System::Void EnnemiBtn_Click(System::Object^ sender, System::EventArgs^ e) {
+		FormListeEnnemi^ formListeEnnemi = gcnew FormListeEnnemi();
+		formListeEnnemi->ShowDialog();
+		System::Diagnostics::Debug::WriteLine("FormListeEnnemi fermé");
+		}
 	};
 }
