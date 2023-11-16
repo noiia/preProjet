@@ -11,34 +11,41 @@ namespace preProjet {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Summary for FormListeEnnemi
+	/// Summary for FormListeHeros
 	/// </summary>
-	public ref class FormListeEnnemi : public System::Windows::Forms::Form
+	public ref class FormListeHeros : public System::Windows::Forms::Form
 	{
 		BDD^ mabdd;
 	public:
-		FormListeEnnemi(BDD^ mabdd)
+		FormListeHeros(BDD^ mabdd)
 		{
-			this->mabdd;
+			InitializeComponent();
+			//
+			//TODO: Add the constructor code here
+			//
+			this->mabdd = mabdd;
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
 			//
 			DataGridViewTextBoxColumn^ dgvtbcName = gcnew DataGridViewTextBoxColumn();
 			dgvtbcName->Name = "Name";
-			this->CreatureDataGridView->Columns->Add(dgvtbcName);
+			this->HeroDataGridView->Columns->Add(dgvtbcName);
 			DataGridViewTextBoxColumn^ dgvtbcHp = gcnew DataGridViewTextBoxColumn();
 			dgvtbcHp->Name = "HP";
-			this->CreatureDataGridView->Columns->Add(dgvtbcHp);
+			this->HeroDataGridView->Columns->Add(dgvtbcHp);
 			DataGridViewTextBoxColumn^ dgvtbcAtk = gcnew DataGridViewTextBoxColumn();
 			dgvtbcAtk->Name = "Attack";
-			this->CreatureDataGridView->Columns->Add(dgvtbcAtk);
+			this->HeroDataGridView->Columns->Add(dgvtbcAtk);
 			DataGridViewTextBoxColumn^ dgvtbcLvl = gcnew DataGridViewTextBoxColumn();
 			dgvtbcLvl->Name = "Level";
-			this->CreatureDataGridView->Columns->Add(dgvtbcLvl);
+			this->HeroDataGridView->Columns->Add(dgvtbcLvl);
+			DataGridViewTextBoxColumn^ dgvtbcLvlStat = gcnew DataGridViewTextBoxColumn();
+			dgvtbcLvlStat->Name = "Level status";
+			this->HeroDataGridView->Columns->Add(dgvtbcLvlStat);
 			DataGridViewTextBoxColumn^ dgvtbcID = gcnew DataGridViewTextBoxColumn();
 			dgvtbcID->Name = "ID";
-			this->CreatureDataGridView->Columns->Add(dgvtbcID);
+			this->HeroDataGridView->Columns->Add(dgvtbcID);
 
 			DataSet^ ds = mabdd->executeQuery("SELECT * FROM utilisateur");
 
@@ -57,7 +64,7 @@ namespace preProjet {
 				DataGridViewTextBoxCell^ dgvc2 = gcnew DataGridViewTextBoxCell();
 				dgvc2->Value = nom;
 				dgvr->Cells->Add(dgvc2);
-				this->CreatureDataGridView->Rows->Add(dgvr);
+				this->HeroDataGridView->Rows->Add(dgvr);
 
 
 			}
@@ -67,20 +74,18 @@ namespace preProjet {
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		~FormListeEnnemi()
+		~FormListeHeros()
 		{
 			if (components)
 			{
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::DataGridView^ CreatureDataGridView;
-	private: System::Windows::Forms::Label^ Title;
 	private: System::Windows::Forms::Button^ retourBtn;
-
 	protected:
+	private: System::Windows::Forms::Label^ Title;
+	private: System::Windows::Forms::DataGridView^ HeroDataGridView;
 
-	protected:
 
 	private:
 		/// <summary>
@@ -95,57 +100,57 @@ namespace preProjet {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->CreatureDataGridView = (gcnew System::Windows::Forms::DataGridView());
-			this->Title = (gcnew System::Windows::Forms::Label());
 			this->retourBtn = (gcnew System::Windows::Forms::Button());
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->CreatureDataGridView))->BeginInit();
+			this->Title = (gcnew System::Windows::Forms::Label());
+			this->HeroDataGridView = (gcnew System::Windows::Forms::DataGridView());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->HeroDataGridView))->BeginInit();
 			this->SuspendLayout();
 			// 
-			// UserDataGridView
+			// retourBtn
 			// 
-			this->CreatureDataGridView->AllowUserToAddRows = false;
-			this->CreatureDataGridView->AllowUserToDeleteRows = false;
-			this->CreatureDataGridView->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->CreatureDataGridView->Location = System::Drawing::Point(54, 93);
-			this->CreatureDataGridView->Name = L"UserDataGridView";
-			this->CreatureDataGridView->ReadOnly = true;
-			this->CreatureDataGridView->Size = System::Drawing::Size(529, 303);
-			this->CreatureDataGridView->TabIndex = 0;
+			this->retourBtn->Font = (gcnew System::Drawing::Font(L"Poor Richard", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->retourBtn->Location = System::Drawing::Point(238, 398);
+			this->retourBtn->Name = L"retourBtn";
+			this->retourBtn->Size = System::Drawing::Size(117, 46);
+			this->retourBtn->TabIndex = 5;
+			this->retourBtn->Text = L"Retour";
+			this->retourBtn->UseVisualStyleBackColor = true;
+			this->retourBtn->Click += gcnew System::EventHandler(this, &FormListeHeros::retourBtn_Click);
 			// 
 			// Title
 			// 
 			this->Title->AutoSize = true;
 			this->Title->Font = (gcnew System::Drawing::Font(L"Poor Richard", 21.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->Title->Location = System::Drawing::Point(166, 26);
+			this->Title->Location = System::Drawing::Point(142, 9);
 			this->Title->Name = L"Title";
 			this->Title->Size = System::Drawing::Size(296, 33);
-			this->Title->TabIndex = 1;
+			this->Title->TabIndex = 4;
 			this->Title->Text = L"Liste de monstres en jeu";
 			// 
-			// retourBtn
+			// HeroDataGridView
 			// 
-			this->retourBtn->Font = (gcnew System::Drawing::Font(L"Poor Richard", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->retourBtn->Location = System::Drawing::Point(262, 415);
-			this->retourBtn->Name = L"retourBtn";
-			this->retourBtn->Size = System::Drawing::Size(117, 46);
-			this->retourBtn->TabIndex = 2;
-			this->retourBtn->Text = L"Retour";
-			this->retourBtn->UseVisualStyleBackColor = true;
-			this->retourBtn->Click += gcnew System::EventHandler(this, &FormListeEnnemi::retourBtn_Click);
+			this->HeroDataGridView->AllowUserToAddRows = false;
+			this->HeroDataGridView->AllowUserToDeleteRows = false;
+			this->HeroDataGridView->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->HeroDataGridView->Location = System::Drawing::Point(30, 76);
+			this->HeroDataGridView->Name = L"HeroDataGridView";
+			this->HeroDataGridView->ReadOnly = true;
+			this->HeroDataGridView->Size = System::Drawing::Size(529, 303);
+			this->HeroDataGridView->TabIndex = 3;
 			// 
-			// FormListeEnnemi
+			// FormListeHeros
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(646, 484);
+			this->ClientSize = System::Drawing::Size(597, 480);
 			this->Controls->Add(this->retourBtn);
 			this->Controls->Add(this->Title);
-			this->Controls->Add(this->CreatureDataGridView);
-			this->Name = L"FormListeEnnemi";
-			this->Text = L"FormListeEnnemi";
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->CreatureDataGridView))->EndInit();
+			this->Controls->Add(this->HeroDataGridView);
+			this->Name = L"FormListeHeros";
+			this->Text = L"FormListeHeros";
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->HeroDataGridView))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -154,5 +159,5 @@ namespace preProjet {
 	private: System::Void retourBtn_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->Close();
 	}
-};
+	};
 }

@@ -117,6 +117,7 @@
     <ClCompile Include="Creatures.cpp" />
     <ClCompile Include="forgottenFunctions.cpp" />
     <ClCompile Include="FormListeEnnemi.cpp" />
+    <ClCompile Include="FormListeHeros.cpp" />
     <ClCompile Include="FormMenu.cpp" />
     <ClCompile Include="FormOptions.cpp" />
     <ClCompile Include="Heros.cpp" />
@@ -128,6 +129,9 @@
     <ClInclude Include="CesiEtDragon.h" />
     <ClInclude Include="Creatures.h" />
     <ClInclude Include="FormListeEnnemi.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="FormListeHeros.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="FormMenu.h">
@@ -149,6 +153,9 @@
   <ItemGroup>
     <EmbeddedResource Include="FormListeEnnemi.resx">
       <DependentUpon>FormListeEnnemi.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormListeHeros.resx">
+      <DependentUpon>FormListeHeros.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMenu.resx">
       <DependentUpon>FormMenu.h</DependentUpon>
