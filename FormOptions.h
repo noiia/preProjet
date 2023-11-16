@@ -1,5 +1,6 @@
 #pragma once
 #include "FormListeEnnemi.h"
+#include "BDD.h"
 
 namespace preProjet {
 
@@ -15,6 +16,7 @@ namespace preProjet {
 	/// </summary>
 	public ref class FormOptions : public System::Windows::Forms::Form
 	{
+		BDD^ mabdd;
 	public:
 		FormOptions(void)
 		{
@@ -113,7 +115,7 @@ namespace preProjet {
 #pragma endregion
 
 	private: System::Void EnnemiBtn_Click(System::Object^ sender, System::EventArgs^ e) {
-		FormListeEnnemi^ formListeEnnemi = gcnew FormListeEnnemi();
+		FormListeEnnemi^ formListeEnnemi = gcnew FormListeEnnemi(mabdd);
 		formListeEnnemi->ShowDialog();
 		System::Diagnostics::Debug::WriteLine("FormListeEnnemi fermé");
 		}
