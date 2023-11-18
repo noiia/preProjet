@@ -124,6 +124,7 @@
     <ClCompile Include="FormOptions.cpp" />
     <ClCompile Include="Heros.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="Sauvegarde.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -143,6 +144,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Heros.h" />
+    <ClInclude Include="MyForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Sauvegarde.h" />
   </ItemGroup>
   <ItemGroup>
@@ -164,6 +168,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormOptions.resx">
       <DependentUpon>FormOptions.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyForm.resx">
+      <DependentUpon>MyForm.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

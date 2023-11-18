@@ -8,12 +8,13 @@ BDD::BDD()
     try
     {
         // Chaine de connexion
-        String^ connectString = "Data Source=127.0.0.1,1433 ; Initial Catalog = CesiDragons ; User ID=sa ; Password=Test$Test1";
+        String^ connectString = "Data Source=127.0.0.1;Initial Catalog=CesiDragons;Persist Security Info=True;User ID=sa;Password=Test$Test1";
         // Objet connection
         connection = gcnew SqlConnection(connectString);
         // Ouverture
         connection->Open();
         System::Diagnostics::Debug::WriteLine("Connexion ok");
+        System::Diagnostics::Debug::WriteLine("this->connection est null : " + (this->connection == nullptr ? "true" : "false"));
     }
     catch (Exception^ ex)
     {
@@ -29,7 +30,7 @@ System::Data::DataSet^ BDD::executeQuery(String^ sql)
 {
     System::Diagnostics::Debug::WriteLine("REQSQL: " + sql);
     SqlDataAdapter^ da = gcnew SqlDataAdapter(sql, this->connection);
-    // Cr�ation d'un DataSet
+    // Création d'un DataSet
     System::Data::DataSet^ ds = gcnew System::Data::DataSet();
     // Remplissage du DataSet avec le SqlDataAdapter
     da->Fill(ds);

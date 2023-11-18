@@ -16,9 +16,11 @@ namespace preProjet {
 	/// </summary>
 	public ref class FormMenu : public System::Windows::Forms::Form
 	{
+		BDD^ bdd;
 	public:
-		FormMenu(void)
+		FormMenu(BDD^ bdd)
 		{
+			this->bdd = bdd;
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
@@ -118,7 +120,7 @@ namespace preProjet {
 		}
 #pragma endregion
 	private: System::Void OptBtn_Click(System::Object^ sender, System::EventArgs^ e) {
-		FormOptions^ formOptions = gcnew FormOptions();
+		FormOptions^ formOptions = gcnew FormOptions(bdd);
 		formOptions->ShowDialog();
 		System::Diagnostics::Debug::WriteLine("FormOptions fermé");
 	}

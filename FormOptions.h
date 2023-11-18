@@ -1,4 +1,5 @@
 #pragma once
+#include "FormListeHeros.h"
 #include "FormListeEnnemi.h"
 #include "BDD.h"
 
@@ -16,10 +17,11 @@ namespace preProjet {
 	/// </summary>
 	public ref class FormOptions : public System::Windows::Forms::Form
 	{
-		BDD^ mabdd;
+		BDD^ bdd;//jamais initialisé ?
 	public:
-		FormOptions(void)
+		FormOptions(BDD^ bdd)
 		{
+			this->bdd = bdd;
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
@@ -84,6 +86,7 @@ namespace preProjet {
 			this->HeroBtn->TabIndex = 1;
 			this->HeroBtn->Text = L"Héros";
 			this->HeroBtn->UseVisualStyleBackColor = true;
+			this->HeroBtn->Click += gcnew System::EventHandler(this, &FormOptions::HeroBtn_Click);
 			// 
 			// EnnemiBtn
 			// 
@@ -115,9 +118,14 @@ namespace preProjet {
 #pragma endregion
 
 	private: System::Void EnnemiBtn_Click(System::Object^ sender, System::EventArgs^ e) {
-		FormListeEnnemi^ formListeEnnemi = gcnew FormListeEnnemi(mabdd);
+		FormListeEnnemi^ formListeEnnemi = gcnew FormListeEnnemi(bdd);
 		formListeEnnemi->ShowDialog();
 		System::Diagnostics::Debug::WriteLine("FormListeEnnemi fermé");
 		}
-	};
+	private: System::Void HeroBtn_Click(System::Object^ sender, System::EventArgs^ e) {
+		FormListeHeros^ formListeHeros = gcnew FormListeHeros(bdd);
+		formListeHeros->ShowDialog();
+		System::Diagnostics::Debug::WriteLine("FormListeHero fermé");
+	}
+};
 }

@@ -19,7 +19,10 @@ int __clrcall WinMain(array<String^>^ args)
     // monFormulaire -> est la variable qui va prendre l'instance de FormMenu
     // gcnew -> est l'opérateur utilisé pour créer et allouer un nouvel objet managée sur le tas 
     // preProjet::FormMenu() -> appel au constructeur par défaut de la classe 
-    preProjet::FormMenu^ monFormulaire = gcnew preProjet::FormMenu();
+    //Je te conseille d'init ta bdd dans le main et la refiler ensuite a toutes tes futures fenetres
+    BDD^ bdd = gcnew BDD();
+
+    preProjet::FormMenu^ monFormulaire = gcnew preProjet::FormMenu(bdd);
     Application::Run(monFormulaire);
     }
     catch (Exception^ ex) {
